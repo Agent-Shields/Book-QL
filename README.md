@@ -1,5 +1,8 @@
 # Book Search Engine Starter Code
 
+## Description
+We are to refactor an existing, fully functional RestfulAPI application into a graphQL structured application. 
+
 ## Deployed Application Heroku Link
 <!-- placeholder deployed app -->
 
