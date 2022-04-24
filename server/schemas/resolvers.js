@@ -49,7 +49,7 @@ const resolvers = {
 
                 await User.findByIdAndUpdate(
                     { _id: context.user.id },
-                    { $push: { user: bookSchema.saveBook } },
+                    { $addToSet: { user: bookSchema.saveBook } },
                     { new: true }
                 )
 
