@@ -6,7 +6,7 @@ const { ApolloServer } = require('apollo-server-express')
 const { typeDefs, resolvers } = require('./schemas')
 const db = require('./config/connection');
 // const routes = require('./routes');
-// const { authMiddleware } = require('./utils/auth');
+const  authMiddleware  = require('./utils/auth');
 
 
 const PORT = process.env.PORT || 3001;
@@ -17,13 +17,13 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // context: authMiddleware
+    context: authMiddleware
   })
 
   // start Apollo server
   await server.start();
 
-  // integrate our apollo server iwth express app as middleware
+  // integrate our apollo server with express app as middleware
   server.applyMiddleware({ app })
 
   // log where we can go test our GQL API
