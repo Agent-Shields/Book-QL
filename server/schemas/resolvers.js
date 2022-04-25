@@ -45,15 +45,15 @@ const resolvers = {
         },
         saveBook: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.create({ ...args, username: context.user.username })
-
-                await User.findByIdAndUpdate(
-                    { _id: context.user.id },
-                    { $addToSet: { user: bookSchema.saveBook } },
-                    { new: true }
+                // const user = await User.create({ ...args, username: context.user.username })
+                
+                const updatedUser =  await User.findByIdAndUpdate(
+                { _id: context.user.id },
+                { $addToSet: { user: bookSchema.saveBook } },
+                { new: true }
                 )
 
-                return user;
+                return updatedUser;
             }
 
             throw new AuthenticationError('You need to be logged in')
